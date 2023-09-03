@@ -1,19 +1,19 @@
 ## Everything you need to know
 
 ## Version control
-- [ ] Git
+- [ ] [Git](./version-control/git.md)
 
 ## Core
 - [ ] Object-oriented programming
 - [ ] Functional programming
 - [ ] Data structures
-- [ ] Design patterns
+- [ ] [Design patterns](./core/design-patterns.md)
 - [ ] Algorithms
 
 ## Languages
-- [ ] JavaScript
+- [ ] [JavaScript](./languages/java-script.md)
 - [ ] TypeScript
 
 ## Packages
-- [ ] React
+- [ ] [React](./packages/react.md)
 
