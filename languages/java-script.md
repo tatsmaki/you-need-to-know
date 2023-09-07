@@ -50,6 +50,18 @@
 
 
 ```javascript
+const copyArray = (array) => {
+    return array.map(data => deepCopy(data));
+}
+
+const copyObject = (object) => {
+    const newObject = {};
+    for (let key in object) {
+        newObject[key] = deepCopy(object[key]);
+    }
+    return newObject;
+}
+
 const deepCopy = (data) => {
     switch (typeof data) {
         case 'number':
@@ -61,20 +73,12 @@ const deepCopy = (data) => {
         }
         case 'object': {
             if (Array.isArray(data)) {
-                const arrayCopy = [];
-                for (let i = 0; i < data.length; i += 1) {
-                    arrayCopy.push(deepCopy(data[i]));
-                }
-                return arrayCopy;
+                return copyArray(data);
             }
             if (data instanceof Set) {
                 return new Set(deepCopy([...data]));
             }
-            const objectCopy = {};
-            for (let key in data) {
-                objectCopy[key] = deepCopy(data[key]);
-            }
-            return objectCopy;
+            return copyObject(data);
         }
         case 'function': {
             return data.bind({});
