@@ -59,50 +59,50 @@
 
 Сразу говори, что лучше использовать web API [`scructuredClone`](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone)
 
-
 ```javascript
 const copyArray = (array) => {
-    return array.map(data => deepCopy(data));
-}
+  return array.map((data) => deepCopy(data));
+};
 
 const copyObject = (object) => {
-    const newObject = {};
-    for (let key in object) {
-        newObject[key] = deepCopy(object[key]);
-    }
-    return newObject;
-}
+  const newObject = {};
+  for (let key in object) {
+    newObject[key] = deepCopy(object[key]);
+  }
+  return newObject;
+};
 
 const deepCopy = (data) => {
-    switch (typeof data) {
-        case 'number':
-        case 'string':
-        case 'boolean':
-        case 'undefined':
-        case 'bigint': {
-            return data;
-        }
-        case 'object': {
-            if (Array.isArray(data)) {
-                return copyArray(data);
-            }
-            if (data instanceof Set) {
-                return new Set(deepCopy([...data]));
-            }
-            return copyObject(data);
-        }
-        case 'function': {
-            return data.bind({});
-        }
-        case 'symbol': {
-            return Symbol(data.description);
-        }
-        default: {
-            break;
-        }
+  switch (typeof data) {
+    case "number":
+    case "string":
+    case "boolean":
+    case "undefined":
+    case "bigint": {
+      return data;
     }
+    case "object": {
+      if (Array.isArray(data)) {
+        return copyArray(data);
+      }
+      if (data instanceof Set) {
+        return new Set(deepCopy([...data]));
+      }
+      return copyObject(data);
+    }
+    case "function": {
+      return data.bind({});
+    }
+    case "symbol": {
+      return Symbol(data.description);
+    }
+    default: {
+      break;
+    }
+  }
 };
 ```
+
 </details>
 
 <details>
@@ -112,7 +112,7 @@ const deepCopy = (data) => {
 </summary>
 
 - [ ] `Proxy` - это объект обертка над другим объектом. Создается с помощью `new Proxy(target, handler)`
-- [ ] С объектом `target`, обернутым с прокси все еще можно взаимодействовать напрямую. Поэтому может быть хорошей идеей скрыть доступ к нему и предоставить доступ только к прокси обертке 
+- [ ] С объектом `target`, обернутым с прокси все еще можно взаимодействовать напрямую. Поэтому может быть хорошей идеей скрыть доступ к нему и предоставить доступ только к прокси обертке
 - [ ] `handler` - объект, описывающий поведение прокси при базовых операциях с объектом, таких как чтение, запись, проверка на существование ключа, удаление и другие. Поведение описывается отдельно для каждой операции с помощью ловушки
 - [ ] `trap` - ловушка для конкретного взаимодействия с объектом. Примеры ловушек `get`, `set`, `deleteProperty`
 </details>

@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "observer": "ts-node core/observer.ts",
+    "strategy": "ts-node core/strategy.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
